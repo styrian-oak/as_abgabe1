@@ -1,10 +1,9 @@
 package berlin.tu.eecs;
 
-/**
- * Hello world!
- */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        String bookPath = "buecher/frankenstein.txt";
+        String text = BookReader.getBookText(bookPath);
+        System.out.println(text);
     }
 }
