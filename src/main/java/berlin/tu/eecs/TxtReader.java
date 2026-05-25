@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class TxtReader {
     private @Getter String filePath;
-    private List<String> lines;
+    private @Getter List<String> lines;
 
     // Kein Lombok-Konstruktor mögl., weil wir Pfad für getTxtList-Aufruf
     // brauchen
