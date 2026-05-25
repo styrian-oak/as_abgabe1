@@ -19,5 +19,10 @@ public class App {
         //System.out.println(content);
 
         System.out.println(ContentAnalyzer.countWords(content));
+
+        List<String> selection = ContentSelector.selectLinesRange(content, 5, 10);
+        for (String line : selection) {
+            System.out.println(line);
+        }
     }
 }
