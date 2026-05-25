@@ -24,7 +24,9 @@ public class App {
         //List<String> selection = ContentSelector.selectLinesString(content, "castle");
         List<String> selection = ContentSelector.combineSelections(content, 77, 80, "Germany");
 
-        for (String line : selection) {
+        List<String> normalized = ContentModifier.normalizeList(selection);
+
+        for (String line : normalized) {
             System.out.println(line);
         }
     }
