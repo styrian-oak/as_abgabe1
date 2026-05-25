@@ -20,8 +20,9 @@ public class App {
 
         System.out.println(ContentAnalyzer.countWords(content));
 
-        //List<String> selection = ContentSelector.selectLinesRange(content, 5, 10);
-        List<String> selection = ContentSelector.selectLinesString(content, "castle");
+        //List<String> selection = ContentSelector.selectLinesRange(content, 77, 80);
+        //List<String> selection = ContentSelector.selectLinesString(content, "castle");
+        List<String> selection = ContentSelector.combineSelections(content, 77, 80, "Germany");
 
         for (String line : selection) {
             System.out.println(line);

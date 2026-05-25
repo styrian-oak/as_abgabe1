@@ -2,6 +2,8 @@ package berlin.tu.eecs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class ContentSelector {
 
@@ -27,5 +29,24 @@ public class ContentSelector {
         }
 
         return result;
+    }
+
+    public static List<String> combineSelections(
+            List<String> lines,
+            int start,
+            int end,
+            String searchString) {
+
+        Set<String> result = new LinkedHashSet<>();
+
+        // Ergebnisse der Range-Auswahl hinzufügen
+        result.addAll(selectLinesRange(lines, start, end));
+
+        // Ergebnisse der String-Suche hinzufügen
+        result.addAll(selectLinesString(lines, searchString));
+
+        // List<String> zurückgeben für konsistente API
+        //return result;
+        return new ArrayList<>(result);
     }
 }
