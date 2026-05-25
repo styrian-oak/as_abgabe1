@@ -1,39 +1,45 @@
 package berlin.tu.eecs;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class TxtReader {
-    private @Getter String filePath;
-    private @Getter List<String> lines;
 
-    // Kein Lombok-Konstruktor mögl., weil wir Pfad für getTxtList-Aufruf
-    // brauchen
-    public TxtReader(String filePath) {
-        this.filePath = filePath;
-
-        // Speichere Inhalt zur weiteren Verarbeitung
-        this.lines = getTxtList(filePath);
-    }
-
-    // Lese Inhalt Zeile für Zeile ein (Stream wird autom. geschlossen)
     public static List<String> getTxtList(String path) {
-        List<String> content = new ArrayList<>();
+        List<String> contentLines = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                content.add(line);
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                contentLines.add(line);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return content;
+
+        return contentLines;
+    }
+
+    public static String getTxtString(String path) {
+        StringBuilder contentString = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                contentString.append(line).append(System.lineSeparator());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return contentString.toString();
     }
 }
